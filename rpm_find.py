@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def find_start_time(t, rpm, start_rpm, frame_duration=1.0, step=0.01):
     """
@@ -32,3 +33,4 @@ def find_start_time(t, rpm, start_rpm, frame_duration=1.0, step=0.01):
     raise ValueError("No suitable start time found where average RPM meets or exceeds the threshold.")
 
 
+data = pd.read_csv("/content/ornek_data_04.csv", on_bad_lines='skip')
