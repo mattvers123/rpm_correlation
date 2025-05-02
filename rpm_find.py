@@ -33,4 +33,17 @@ def find_start_time(t, rpm, start_rpm, frame_duration=1.0, step=0.01):
     raise ValueError("No suitable start time found where average RPM meets or exceeds the threshold.")
 
 
-data = pd.read_csv("/content/ornek_data_04.csv", on_bad_lines='skip')
+data = pd.read_csv("/content/ornek_data.csv", on_bad_lines='skip')
+
+
+t = data['s'].values
+t = np.array(t)
+
+start_rpm_threshold = 1000  # Desired starting RPM
+frame_duration = 1.0
+try:
+    start_time, avg_rpm = find_start_time(t, rpm, start_rpm_threshold, frame_duration)
+    print(f"Start time: {start_time:.2f} s, Average RPM: {avg_rpm:.2f}")
+    # Proceed with your analysis using this start_time
+except ValueError as e:
+    print(str(e))
